@@ -78,7 +78,6 @@
       })
       .catch(error => console.error('Error loading navbar:', error));
   
-    // Additional scripts
     // get domain
     const currentDomain = window.location.hostname;
   
@@ -121,7 +120,7 @@
     window.addEventListener('load', () => {
       document.body.classList.add('loaded');
       document.querySelector('header').classList.add('visible');
-      window.scrollTo(0, 0); // Ensure scroll to top on load
+      window.scrollTo(0, 0);
     });
   </script>  
 </body>

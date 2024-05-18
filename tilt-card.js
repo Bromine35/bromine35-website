@@ -1,4 +1,4 @@
-// tilt-card.js
+// tilt-card.js soooooooooooooooooooooooo eeeppppppppyyyyyyy
 document.querySelectorAll('.tilt-card').forEach(card => {
     let lastX = 0, lastY = 0;
   
