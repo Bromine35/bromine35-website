@@ -45,6 +45,11 @@
         </div>
       </div>
     </section>
+    <section id="scroll-down" class="section py-5 flex-grow-1 scroll-down-section">
+      <div class="container text-center">
+        <i>psst... scroll down for more.</i>
+      </div>
+    </section>    
     <section id="team" class="section py-5 flex-grow-1">
       <div class="container">
         <h1 class="text-center mb-4">Meet the Team</h1>
@@ -121,6 +126,18 @@
       document.body.classList.add('loaded');
       document.querySelector('header').classList.add('visible');
       window.scrollTo(0, 0); // Ensure scroll to top on load
+    });
+
+    // Hide scroll down section on scroll
+    window.addEventListener('scroll', () => {
+      const scrollDownSection = document.getElementById('scroll-down');
+      if (scrollDownSection) {
+        if (window.scrollY > (scrollDownSection.offsetTop - window.innerHeight / 2)) {
+          scrollDownSection.classList.add('hide');
+        } else {
+          scrollDownSection.classList.remove('hide');
+        }
+      }
     });
   </script>
 </body>
