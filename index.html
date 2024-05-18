@@ -9,20 +9,20 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
+  <header class="header">
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
       <div class="container">
-        <a class="navbar-brand" href=".">Bromine35</a>
+        <a class="navbar-brand" href="#">Bromine35</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" href=".">Home</a>
+              <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="exploits">Exploits</a>
+              <a class="nav-link" href="#team">Meet the Team</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#" target="_blank" id="joinDiscordLink">Join Discord</a>
@@ -34,7 +34,7 @@
   </header>
 
   <main class="d-flex flex-column min-vh-100">
-    <section class="py-5 flex-grow-1">
+    <section id="about" class="section py-5 flex-grow-1">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md-8 offset-md-2 text-center">
@@ -43,6 +43,10 @@
             <p>Join us on our journey as we uncover the hidden secrets of the digital world and empower others with our findings.</p>
           </div>
         </div>
+      </div>
+    </section>
+    <section id="team" class="section py-5 flex-grow-1">
+      <div class="container">
         <h1 class="text-center mb-4">Meet the Team</h1>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           <div class="col">
@@ -77,12 +81,46 @@
     const joinDiscordLink = document.getElementById('joinDiscordLink');
     joinDiscordLink.href = `https://discord.gg/invite-link-here`; // Replace with your actual Discord invite link
 
-    // Update all relative links to include the current domain
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-      if (!link.href.startsWith('http')) {
-        link.href = `${window.location.protocol}//${currentDomain}/${link.getAttribute('href')}`;
-      }
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Scroll to the top on page refresh
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+
+    // Animation on scroll
+    const sections = document.querySelectorAll('.section');
+    const options = {
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // Initial fade-in
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+      document.querySelector('header').classList.add('visible');
+      window.scrollTo(0, 0); // Ensure scroll to top on load
     });
   </script>
 </body>
