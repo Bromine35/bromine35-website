@@ -11,8 +11,8 @@ document.querySelectorAll('.tilt-card').forEach(card => {
         lastX = x;
         lastY = y;
   
-        const xRotation = 100 * ((x - rect.width / 2) / rect.width);
-        const yRotation = -100 * ((y - rect.height / 2) / rect.height);
+        const xRotation = 50 * ((x - rect.width / 2) / rect.width);
+        const yRotation = -50 * ((y - rect.height / 2) / rect.height);
         const rotation = `perspective(1000px) rotateX(${yRotation}deg) rotateY(${xRotation}deg)`;
         card.style.transform = rotation;
       }
