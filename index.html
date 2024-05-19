@@ -20,6 +20,13 @@
   </header>
 
   <main class="d-flex flex-column min-vh-100">
+
+    <section id="huge-bromine35" class="section typing-animation">
+      <div class="container text-center">
+          <h1 class="typing-text">
+      </div>
+    </section>
+
     <section id="about" class="section py-5 flex-grow-1">
       <div class="container">
         <div class="row mb-5">
@@ -158,7 +165,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="tilt-card.js"></script>
   <script>
-    // Load navbar
+    // load navbar v2 cuz it broke like 1361976132 times
     fetch('navbar.html')
       .then(response => response.text())
       .then(data => {
@@ -210,6 +217,22 @@
       document.querySelector('header').classList.add('visible');
       window.scrollTo(0, 0);
     });
+    // Typing animation for Bromine35
+    const typingText = document.querySelector('.typing-text');
+        const text = "Bromine35";
+        let index = 0;
+
+        // Delay before starting the typing animation
+        setTimeout(() => {
+            function type() {
+                if (index < text.length) {
+                    typingText.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, 200); // Adjust typing speed here
+                }
+            }
+            type();
+        }, 1000); // Delay in milliseconds
   </script>  
 </body>
 </html>

@@ -110,3 +110,12 @@ body.loaded {
   opacity: 0;
   pointer-events: none;
 }
+
+#huge-bromine35 {
+  margin-top: 50px; /*stupid ahh space for bromine title*/
+}
+.typing-text {
+  font-family: 'Courier New', Courier, monospace;
+  margin: 0 auto;
+  color: #ffff66;
+}
