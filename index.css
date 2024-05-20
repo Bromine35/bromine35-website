@@ -123,3 +123,18 @@ a {
   margin: 0 auto;
   color: #ef9f76;
 }
+.about-box {
+  background-color: rgba(128, 128, 128, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+  display: inline-block;
+  position: relative;
+}
+
+.about-text {
+  color: #fff;
+  font-size: 16px;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
