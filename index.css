@@ -1,6 +1,6 @@
 body {
   font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, #8e44ad, #c0392b);
+  background: linear-gradient(135deg, #626880,#99d1db);
   background-attachment: fixed;
   min-height: 100vh;
   color: #fff;
@@ -13,6 +13,10 @@ body {
 
 body.loaded {
   opacity: 1;
+}
+
+a {
+  color: #303446;
 }
 
 .header {
@@ -117,5 +121,5 @@ body.loaded {
 .typing-text {
   font-family: 'Courier New', Courier, monospace;
   margin: 0 auto;
-  color: #ffff66;
+  color: #ef9f76;
 }
