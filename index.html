@@ -278,10 +278,10 @@
   </footer>
   <canvas id="sparkleCanvas"></canvas>
   <script src="sparkles.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> <!--i dont see a issue with using BScss so shut up ok :3-->
+  <script src="bootstrap.bundle.min.js"></script> <!--i dont see a issue with using BScss so shut up ok :3-->
   <script src="tilt-card.js"></script>
   <script src="drag_cards.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.8/lib/draggable.bundle.legacy.js"></script>
+  <script src="draggable.bundle.legacy.js"></script>
   <script>
     // load navbar v2 cuz it broke like 1361976132 times
     fetch('navbar.html')
@@ -313,6 +313,8 @@
     const sections = document.querySelectorAll('.section');
     const options = {
       threshold: 0.09 //how much percent before loading in member cards ykkykyk
+      // was decreased to support mobile
+      // why? because mobile screens are smaller. the render for member card section is calculated by how much percentage of the section you have scrolled to before actually rendering for that amazing animation. as phone screens are smaller, the section is way longer for mobile users and mobile users have to scroll further. therefore, decreased percentage to allow support for mobile users.
     };
 
     const observer = new IntersectionObserver((entries, observer) => {
