@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bromine35 - YouTube</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <header class="header">
+    <div id="navbar-container"></div>
+  </header>
+
+  <main class="d-flex flex-column min-vh-100">
+    <section class="section py-5 flex-grow-1">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8 offset-md-2 text-center">
+            <h2 class="mb-4">Welcome to Bromine35 YouTube</h2>
+            <div class="about-box">
+              <p class="about-text">Choose an option:</p>
+              <a href="https://bromineyt.netlify.app/viewer" class="btn btn-outline-light btn-curved">YouTube Viewer</a>
+              <a href="https://bromineyt.netlify.app/downloader" class="btn btn-outline-light btn-curved">YouTube Downloader</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-transparent text-white py-3 mt-auto">
+    <div class="container text-center">
+      <p>bromine35 website :3</p>
+      <p>this website has been brought to you by appleflyer.</p>
+      <p>particles made by lunarion :3</p>
+      <p><a href="https://github.dev/Bromine35/brominewebsite">its open source on github.</a></p>
+    </div>
+  </footer>
+  <canvas id="sparkleCanvas"></canvas>
+  <script src="sparkles.js"></script>
+  <script src="bootstrap.bundle.min.js"></script>
+  <script src="tilt-card.js"></script>
+  <script>
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+</body>
+</html>
