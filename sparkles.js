@@ -11,7 +11,7 @@ const canvas = document.getElementById("sparkleCanvas");
         constructor(x, y) {
           this.x = x;
           this.y = y;
-          this.size = Math.random() * 5 + 6;
+          this.size = Math.random() * 5 + 7;
         }
 
         draw() {
@@ -55,6 +55,6 @@ const canvas = document.getElementById("sparkleCanvas");
       }
 
       sparkles = Array.from({
-        length: 150
+        length: 400
       }, () => createSparkle());
       animate();

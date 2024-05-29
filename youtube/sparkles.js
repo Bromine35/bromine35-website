@@ -55,6 +55,6 @@ const canvas = document.getElementById("sparkleCanvas");
       }
 
       sparkles = Array.from({
-        length: 150
+        length: 250
       }, () => createSparkle());
       animate();
