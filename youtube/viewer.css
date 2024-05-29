@@ -102,7 +102,43 @@ a {
 .form-control:focus {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
+/*vid detail stuff*/
+.video-details-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease-in-out;
+}
 
+.video-details-card:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.video-published {
+  font-size: 0.9rem;
+}
+
+.separator {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.video-description {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.view-count-icon,
+.like-count-icon{
+  margin-right: 0.5rem;
+}
 canvas {
   position: fixed;
   top: 0;
