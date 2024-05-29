@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Popular Videos</title>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bromine35's Popular Videos" />
+  <meta property="og:description" content="bromine35's popular videos list" />
+  <meta property="og:url" content="https://bromine35.netlify.app/youtube/popular" />
+  <meta property="og:image" content="/favicon_io/favicon-32x32.png"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <header class="header">
+    <div id="navbar-container"></div>
+  </header>
+
+  <main class="d-flex flex-column min-vh-100">
+    <section class="section py-5 flex-grow-1">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md-8 offset-md-2 text-center">
+            <h2 class="mb-4">Popular Videos</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 offset-md-2">
+            <div id="video-container" class="d-flex flex-wrap justify-content-center"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-transparent text-white py-3 mt-auto">
+    <div class="container text-center">
+      <p>bromine35 website :3</p>
+      <p>this website has been brought to you by appleflyer.</p>
+      <p>particles made by lunarion :3</p>
+      <p><a href="https://github.dev/Bromine35/brominewebsite">its open source on github.</a></p>
+    </div>
+  </footer>
+  <canvas id="sparkleCanvas" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+  <script src="sparkles.js"></script>
+  <script src="bootstrap.bundle.min.js"></script>
+  <script src="tilt-card.js"></script>
+  <script>
+    // Load navbar
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('navbar-container').innerHTML = data;
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('https://vid.puffyan.us/api/v1/popular')
+        .then(response => response.json())
+        .then(data => {
+          const videoContainer = document.getElementById('video-container');
+          data.forEach(video => {
+            const videoElement = document.createElement('div');
+            videoElement.classList.add('member-card', 'p-3', 'mb-4');
+
+            videoElement.innerHTML = `
+              <div class="row g-4">
+                <div class="col-md-4">
+                  <img src="${video.videoThumbnails[0].url}" alt="${video.title}" class="img-fluid rounded mb-3">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">${video.title}</h5>
+                    <p class="card-text mb-1">By: ${video.author}</p>
+                    <p class="card-text mb-1">Views: ${video.viewCount}</p>
+                    <p class="card-text mb-3">Published: ${video.publishedText}</p>
+                    <a href="viewer.html?id=${video.videoId}" class="btn btn-outline-light">Watch</a>
+                  </div>
+                </div>
+              </div>
+            `;
+
+            videoContainer.appendChild(videoElement);
+          });
+        })
+        .catch(error => console.error('Error fetching the data:', error));
+    });
+  </script>
+</body>
+</html>

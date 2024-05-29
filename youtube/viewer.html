@@ -25,8 +25,8 @@
           <div class="col-md-8 offset-md-2 text-center">
             <h2 class="mb-4">YouTube Player</h2>
             <div class="about-box">
-              <label for="youtube-url" class="about-text">YouTube URL:</label>
-              <input type="text" id="youtube-url" placeholder="https://www.youtube.com/watch?v=example" class="form-control">
+              <label for="youtube-id" class="about-text">YouTube ID:</label>
+              <input type="text" id="youtube-id" placeholder="Enter YouTube video ID" class="form-control">
               <button id="fetch-video" class="btn btn-outline-light btn-curved mt-2">Fetch</button>
             </div>
           </div>
@@ -53,7 +53,7 @@
   <script src="bootstrap.bundle.min.js"></script>
   <script src="tilt-card.js"></script>
   <script>
-    // woo wowwwwww
+    // Load navbar
     fetch('navbar.html')
       .then(response => response.text())
       .then(data => {
@@ -61,22 +61,35 @@
       })
       .catch(error => console.error('Error loading navbar:', error));
 
-    // emb em bebe
-    document.getElementById('fetch-video').addEventListener('click', function() {
-      const youtubeUrl = document.getElementById('youtube-url').value;
-      const videoId = youtubeUrl.split('v=')[1];
-      if (videoId) {
-        const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
-        const videoContainer = document.getElementById('video-container');
-        videoContainer.innerHTML = `
-          <div style="display: flex; justify-content: center; align-items: center;">
-            <div style="position: relative; padding-bottom: 56.25%; width: 100%; max-width: 1280px;">
-              <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
+    // Embed video function
+    function embedVideo(videoId) {
+      const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}`;
+      const videoContainer = document.getElementById('video-container');
+      videoContainer.innerHTML = `
+        <div style="display: flex; justify-content: center; align-items: center;">
+          <div style="position: relative; padding-bottom: 56.25%; width: 100%; max-width: 1280px;">
+            <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="${embedUrl}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
-        `;
+        </div>
+      `;
+    }
+
+    // Check URL for YouTube ID
+    window.onload = function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const videoId = urlParams.get('id');
+      if (videoId) {
+        embedVideo(videoId);
+      }
+    };
+
+    // Fetch video on button click
+    document.getElementById('fetch-video').addEventListener('click', function() {
+      const videoId = document.getElementById('youtube-id').value;
+      if (videoId) {
+        embedVideo(videoId);
       } else {
-        alert('Please enter a valid YouTube URL.');
+        alert('Please enter a valid YouTube ID.');
       }
     });
   </script>
